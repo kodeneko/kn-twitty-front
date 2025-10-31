@@ -8,7 +8,7 @@ import { NotFoundPageComponent } from './pages/not-found/not-found-page.componen
 export const routes: Routes = [
   {
     path: 'public',
-    component: EmptyLayoutComponent,
+    component: PublicLayoutComponent,
     children: [
       {
         path: 'login', component: LoginPageComponent
@@ -17,7 +17,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: PublicLayoutComponent,
+    component: EmptyLayoutComponent,
     children: [
       {
         path: '', component: HomePageComponent
