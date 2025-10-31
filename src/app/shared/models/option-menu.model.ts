@@ -3,4 +3,4 @@ interface OptionMenu {
   path: string;
 }
 
-export type { OptionMenu }
+export type { OptionMenu };
