@@ -3,7 +3,7 @@
     <ul>
       @for (opt of mainOptMenuList; track opt.id) {
       <li>
-        <a aria-label="{{opt.id}}" href="#">{{opt.id}}</a>
+        <a aria-label="{{opt.id}}" routerLink="{{opt.path}}">{{opt.id}}</a>
       </li>
       }
     </ul>

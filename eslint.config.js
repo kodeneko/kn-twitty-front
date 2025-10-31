@@ -36,6 +36,10 @@ module.exports = tseslint.config(
         "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
       // Exige punto y coma al final de cada declaración
       "semi": ["error", "always"],
+    // Exige salto de línea después de la llave de apertura y antes de la de cierre
+    "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
+    // Exige salto de línea por cada llamada encadenada (mejora legibilidad)
+    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
     },
   },
   {

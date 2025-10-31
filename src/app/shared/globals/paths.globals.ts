@@ -1,11 +1,11 @@
-const loginPath = '/public/login';
-const postsPath = '/posts';
-const trendings = '/trendings';
-const profile = '/profile';
+const loginPath = 'public/login';
+const postsPath = 'posts';
+const trendingsPath = 'trendings';
+const profilePath = 'profile';
 
 export {
   loginPath,
   postsPath,
-  trendings,
-  profile
+  trendingsPath,
+  profilePath
 };

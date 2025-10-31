@@ -1,5 +1,5 @@
 import { OptionMenu } from "../models/option-menu.model";
-import { postsPath } from "./paths.globals";
+import { postsPath, profilePath, trendingsPath } from "./paths.globals";
 
 const postsOptMenu: OptionMenu = {
   id: 'posts',
@@ -7,11 +7,11 @@ const postsOptMenu: OptionMenu = {
 };
 const trendingsOptMenu: OptionMenu = {
   id: 'trendings',
-  path: postsPath
+  path: trendingsPath
 };
 const profileOptMenu: OptionMenu = {
   id: 'profile',
-  path: postsPath
+  path: profilePath
 };
 
 const mainOptMenuList: OptionMenu[] = [
