@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { mainOptMenuList } from '../../../shared/globals/menu.globals';
 
 @Component({
   selector: 'app-main-menu',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './main-menu.component.less'
 })
 export class MainMenuComponent {
-
+  public mainOptMenuList = mainOptMenuList;
 }
