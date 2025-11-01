@@ -3,15 +3,15 @@ import { CanActivateFn, Router } from '@angular/router';
 import { UserService } from '../../users/services/user.service';
 import { catchError, map, of } from 'rxjs';
 
-export const privateAreaGuard: CanActivateFn = () => {
+export const goHomeGuard: CanActivateFn = () => {
 
   const userService = inject(UserService);
   const router = inject(Router);
 
   return userService.isLoggedUser().pipe(
-    map(() => true),
+    map(() => router.parseUrl('/')),
     catchError((err: Error) => {
-      console.log('error', 'privateAreaGuard', err);
-      return of(router.parseUrl('/public/login'));
+      console.log('error', 'goHomeGuard', err);
+      return of(true);
     }));
 };

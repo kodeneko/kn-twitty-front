@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +10,10 @@ export class UserService {
   apiUrl = 'http://localhost:3013';
 
   isLoggedUser() {
-    return this.http.get<boolean>(`${this.apiUrl}/auth/islogged`).pipe(
-      map(() => true),
-      catchError(() => of(false))
-    );
+    return this.http.get(`${this.apiUrl}/auth/islogged`, { withCredentials: true });
+  }
+
+  logout() {
+      return this.http.get<boolean>(`${this.apiUrl}/auth/logout`, { withCredentials: true });
   }
 }
