@@ -11,7 +11,7 @@ export class UserService {
   apiUrl = 'http://localhost:3013';
 
   isLoggedUser() {
-    return this.http.get<boolean>(`${this.apiUrl}/auth/islogged`).pipe(
+    return this.http.get<boolean>(`${this.apiUrl}/auth/islogged`, { withCredentials: true }).pipe(
       map(() => true),
       catchError(() => of(false))
     );
