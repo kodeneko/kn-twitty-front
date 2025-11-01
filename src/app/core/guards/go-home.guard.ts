@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { UserService } from '../../users/services/user.service';
 import { catchError, map, of } from 'rxjs';
+import { UserService } from '../../shared/services/user.service';
 
 export const goHomeGuard: CanActivateFn = () => {
 

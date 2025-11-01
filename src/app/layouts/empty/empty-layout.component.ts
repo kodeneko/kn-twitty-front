@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MainMenuComponent } from '../../core/components/main-menu/main-menu.component';
-import { UserService } from '../../users/services/user.service';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-empty-layout',
