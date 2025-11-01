@@ -10,20 +10,23 @@ import { TrendingsPageComponent } from './pages/trendings/trendings-page.compone
 import { ProfilePageComponent } from './pages/profile/profile-page.component';
 import { privateAreaGuard } from './core/guards/private-area.guard';
 import { RedirectTwitterComponent } from './pages/redirect-twitter/redirect-twitter.component';
+import { goHomeGuard } from './core/guards/go-home.guard';
 
 export const routes: Routes = [
   {
+    path: redirectTwitter,
+    component: RedirectTwitterComponent
+  },
+  {
     path: 'public',
     component: PublicLayoutComponent,
+    canActivate:[goHomeGuard],
     children: [
       {
         path: 'login', component: LoginPageComponent
       }
     ]
   },
-        {
-        path: redirectTwitter, component: RedirectTwitterComponent
-      },
   {
     path: '',
     component: EmptyLayoutComponent,
