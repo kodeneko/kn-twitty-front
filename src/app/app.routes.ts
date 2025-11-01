@@ -8,6 +8,7 @@ import { postsPath, profilePath, trendingsPath } from './shared/globals/paths.gl
 import { PostsPageComponent } from './pages/posts/posts-page.component';
 import { TrendingsPageComponent } from './pages/trendings/trendings-page.component';
 import { ProfilePageComponent } from './pages/profile/profile-page.component';
+import { privateAreaGuard } from './core/guards/private-area.guard';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
   {
     path: '',
     component: EmptyLayoutComponent,
+    canActivateChild: [privateAreaGuard],
     children: [
       {
         path: '',
