@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { MainMenuComponent } from '../../core/components/main-menu/main-menu.component';
+import { UserService } from '../../users/services/user.service';
 
 @Component({
   selector: 'app-empty-layout',
@@ -10,4 +11,14 @@ import { MainMenuComponent } from '../../core/components/main-menu/main-menu.com
 })
 export class EmptyLayoutComponent {
 
+  private userService = inject(UserService);
+  private router = inject(Router);
+
+  public doLogout() {
+    this.userService.logout().subscribe({
+      next: () => console.log('ok'),
+      error: () => console.log('error'),
+      complete: () => this.router.navigate(['login']),
+    });
+  }
 }

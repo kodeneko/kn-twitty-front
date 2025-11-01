@@ -20,8 +20,6 @@ export class LoginPageComponent {
       'width=600,height=700'
     );
     const recievedMsg = (event: MessageEvent<unknown>) => {
-      // console.log('event.origin', event.origin);
-      console.log('event.data', event.data);
       if (event.origin === environment.frontUrl && event.data === 'login-ok') {
         this.router.navigate(['/']);
         window.removeEventListener('message', recievedMsg);
