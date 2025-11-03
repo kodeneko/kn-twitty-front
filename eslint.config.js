@@ -10,11 +10,11 @@ module.exports = tseslint.config(
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
       ...tseslint.configs.stylistic,
-      ...angular.configs.tsRecommended,
+      ...angular.configs.tsRecommended
     ],
     processor: angular.processInlineTemplates,
     rules: {
-      "@typescript-eslint/indent": ["error", 2],
+      "@/indent": ["error", 2],
       "@angular-eslint/directive-selector": [
         "error",
         {
@@ -35,7 +35,7 @@ module.exports = tseslint.config(
       "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
       "semi": ["error", "always"],
       "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
-      "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 1 }],
+      "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 1 }]
     },
   },
   {
@@ -45,7 +45,7 @@ module.exports = tseslint.config(
       ...angular.configs.templateAccessibility,
     ],
     rules: {
-      "angular-eslint/template-curly-spacing": ["error", "always"],
+      "@angular-eslint/template/prefer-control-flow": "error",
     },
   }
 );

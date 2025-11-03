@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TwitterError } from './twitter-error.model';
 
 interface Tweet {
