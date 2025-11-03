@@ -11,7 +11,8 @@ export class WoeidService {
   private apiUrl = `${environment.backUrl}/woeid`;
 
   get(place: string) {
-    const params = new HttpParams().set('place', place)
+    const params = new HttpParams()
+      .set('place', place);
     return this.http.get(`${this.apiUrl}`, { withCredentials: true, params });
   }
 }

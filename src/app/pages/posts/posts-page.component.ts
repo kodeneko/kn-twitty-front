@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PostsService } from '../../shared/services/posts.service';
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
-import { catchError, map, Observable, of, startWith } from 'rxjs';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { catchError, map, of, startWith } from 'rxjs';
 import { ErrorBack } from '../../shared/models/api/error-back.model';
 
 
@@ -12,17 +12,23 @@ import { ErrorBack } from '../../shared/models/api/error-back.model';
   templateUrl: './posts-page.component.html',
   styleUrl: './posts-page.component.less'
 })
-export class PostsPageComponent implements OnInit {
+export class PostsPageComponent {
 
   private postService = inject(PostsService);
 
-  countList$ = this.postService.count('cat', 3).pipe(
-    map(data => ({data, loading: false, error: null})),
-    startWith({data: null, loading: true, error: null}),
-    catchError((error: ErrorBack) => of({data: null, loading: false, error}))
-  )
+  countList$ = this.postService.count('cat', 3)
+    .pipe(
+      map(data => ({ data, loading: false, error: null })),
+      startWith({ data: null, loading: true, error: null }),
+      catchError((error: ErrorBack) => of({ data: null, loading: false, error }))
+    );
+  
+  postList$ = this.postService.list(3)
+    .pipe(
+      map(data => ({ data, loading: false, error: null })),
+      startWith({ data: null, loading: true, error: null }),
+      catchError((error: ErrorBack) => of({ data: null, loading: false, error }))
+    );
 
-  ngOnInit(): void {
 
-  }
 }
