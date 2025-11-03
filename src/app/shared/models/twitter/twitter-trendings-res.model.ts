@@ -1,13 +1,13 @@
 import { TwitterError } from "./twitter-error.model";
 
-type TwitterTrendingsData = {
+interface TwitterTrendingsData {
   trend_name: string;
   tweet_count: number;
-};
+}
 
-type TwitterTrendingsRes = {
+interface TwitterTrendingsRes {
   data?: TwitterTrendingsData[];
   errors?: TwitterError[];
-};
+}
 
 export type { TwitterTrendingsRes };

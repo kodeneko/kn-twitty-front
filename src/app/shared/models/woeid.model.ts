@@ -4,4 +4,4 @@ interface Woeid {
   country: string
 }
 
-export type {Woeid}
+export type { Woeid };

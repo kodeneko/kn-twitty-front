@@ -1,1 +1,29 @@
 <p>Trendings Page</p>
+
+<div>
+  <form #woeidForm="ngForm" (ngSubmit)="findPlace(woeidForm)">
+    <input ngModel name="place" type="text" placeholder="write place"/>
+    <button type="submit">Buscar</button>
+  </form>
+  <div>
+    <p>WOID</p>
+    <ul>
+      @if (woeid$ | async; as list) {
+        @if(list.length !== 0) {
+          @for(e of list; track e.id) {
+            <li>{{ e.name }} - {{ e.id }} <button (click)="getTrendings(e.id)">trendings</button></li>
+          }
+        } @else {
+          <li>No results</li>
+        }
+      } @else {
+        <p>loading</p>
+      }
+    </ul>
+  </div>
+</div>
+
+<div>
+  <h2>Results</h2>
+  <div>{{ trendings$ | async | json }}</div>
+</div>

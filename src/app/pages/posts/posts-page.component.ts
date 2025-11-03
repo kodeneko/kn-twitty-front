@@ -30,5 +30,4 @@ export class PostsPageComponent {
       catchError((error: ErrorBack) => of({ data: null, loading: false, error }))
     );
 
-
 }
