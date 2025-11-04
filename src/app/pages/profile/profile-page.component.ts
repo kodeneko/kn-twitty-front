@@ -1,41 +1,37 @@
-import { TwitterUser } from '../../shared/models/twitter/twitter-user.model';
+import { catchError, map, of, startWith } from 'rxjs';
+import { ObservableRes } from '../../shared/models/observable-res.model';
+import { TwitterUserResponse } from '../../shared/models/twitter/twitter-user-response.model';
 import { User } from '../../shared/models/user.model';
 import { UserService } from './../../shared/services/user.service';
 import { Component, inject, OnInit } from '@angular/core';
+import { ErrorBack } from '../../shared/models/api/error-back.model';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-profile-page',
-  imports: [],
+  imports: [JsonPipe, AsyncPipe],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.less'
 })
 export class ProfilePageComponent implements OnInit {
 
   private userService = inject(UserService);
-  private userInfo!: User;
-  private userTwitterInfo!: TwitterUser;
 
+  public userInfo$!: ObservableRes<User>;
+  public userTwitterInfo$!: ObservableRes<TwitterUserResponse>;
+      
   ngOnInit(): void {
-    const userInfo$ = this.userService.getUserInfo();
-    const userTwitterInfo$ = this.userService.getUserTwitterInfo();
-
-    userInfo$.subscribe({
-      next: (res) => {
-        console.log('userInfo', res);
-      },
-      error: (err) => {
-        console.log('userInfo - error', err);
-      }
-    });
-
-    userTwitterInfo$.subscribe({
-      next: (res) => {
-        console.log('userTwitterInfo', res);
-      },
-      error: (err) => {
-        console.log('userTwitterInfo - error', err);
-      }
-    });
+    this.userInfo$ = this.userService.getUserInfo()      
+      .pipe(
+        map(data => ({ data, loading: false, error: null })),
+        startWith({ data: null, loading: true, error: null }),
+        catchError((error: ErrorBack) => of({ data: null, loading: false, error }))
+      );
+    this.userTwitterInfo$ = this.userService.getUserTwitterInfo()      
+      .pipe(
+        map(data => ({ data, loading: false, error: null })),
+        startWith({ data: null, loading: true, error: null }),
+        catchError((error: ErrorBack) => of({ data: null, loading: false, error }))
+      );
   }
-
 }

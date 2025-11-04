@@ -1,1 +1,31 @@
 <p>Profile Page</p>
+
+<div>
+  <h2>User</h2>
+  @if (userInfo$ | async; as res) {
+    @if (res.error) {
+      <div>No hay resultados</div>
+    } @else if (res.loading) {
+      <div>Cargando...</div>
+    } @else {
+      <div>{{ res.data | json }}</div>
+    }
+  } @else {
+    <div>No hay resultados</div>
+  }
+</div>
+
+<div>
+  <h2>User Twitter</h2>
+  @if (userTwitterInfo$ | async; as res) {
+    @if (res.error) {
+      <div>No hay resultados</div>
+    } @else if (res.loading) {
+      <div>Cargando...</div>
+    } @else {
+      <div>{{ res.data | json }}</div>
+    }
+  } @else {
+    <div>No hay resultados</div>
+  }
+</div>

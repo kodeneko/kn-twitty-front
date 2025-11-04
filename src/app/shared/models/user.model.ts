@@ -1,18 +1,10 @@
-interface TwitterInfo {
-  id: string;
-  token: string;
-  refreshToken: string;
-  expiration: number;
-}
-
 interface User {
+  _id: string;
   username: string;
   email: string;
-  twitter: TwitterInfo;
-  admin: boolean;
+  twitterId: string;
 }
 
 export type {
-  TwitterInfo,
   User
 };
