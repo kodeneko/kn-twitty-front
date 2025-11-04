@@ -1,1 +1,27 @@
 <p>Posts Page</p>
+
+<h2>Count Posts</h2>
+@if (countList$ | async; as res) {
+  @if (res.error) {
+    <div>No hay resultados</div>
+  } @else if (res.loading) {
+    <div>Cargando...</div>
+  } @else {
+    <div>{{ res.data | json }}</div>
+  }
+} @else {
+  <div>No hay resultados</div>
+}
+
+<h2>Show Posts</h2>
+@if (postList$ | async; as res) {
+  @if (res.error) {
+    <div>No hay resultados</div>
+  } @else if (res.loading) {
+    <div>Cargando...</div>
+  } @else {
+    <div>{{ res.data | json }}</div>
+  }
+} @else {
+  <div>No hay resultados</div>
+}

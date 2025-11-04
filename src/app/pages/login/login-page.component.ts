@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginPageComponent {
 
   private router = inject(Router);
+  
 
   public openTwitterDialog() {
     window.open(

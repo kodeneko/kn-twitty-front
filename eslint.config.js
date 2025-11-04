@@ -10,10 +10,11 @@ module.exports = tseslint.config(
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
       ...tseslint.configs.stylistic,
-      ...angular.configs.tsRecommended,
+      ...angular.configs.tsRecommended
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      "@/indent": ["error", 2],
       "@angular-eslint/directive-selector": [
         "error",
         {
@@ -30,16 +31,11 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
-        // Exige espacio dentro de llaves en objetos y exportaciones
-        "object-curly-spacing": ["error", "always"],
-        // Exige saltos de línea consistentes en exportaciones de objetos
-        "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
-      // Exige punto y coma al final de cada declaración
+      "object-curly-spacing": ["error", "always"],
+      "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
       "semi": ["error", "always"],
-    // Exige salto de línea después de la llave de apertura y antes de la de cierre
-    "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
-    // Exige salto de línea por cada llamada encadenada (mejora legibilidad)
-    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+      "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
+      "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 1 }]
     },
   },
   {
@@ -48,9 +44,8 @@ module.exports = tseslint.config(
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,
     ],
-      rules: {
-        // Exige espacio dentro de llaves en expresiones Angular
-        'angular-eslint/template-curly-spacing': ['error', 'always'],
-      },
+    rules: {
+      "@angular-eslint/template/prefer-control-flow": "error",
+    },
   }
 );
