@@ -1,0 +1,17 @@
+<div class="mainCont">
+  <div class="contSideMainCont">
+    <app-main-menu></app-main-menu>
+    <div class="contHeaderMain">
+      <header class="mainHeaderCont" role="banner">
+        <h1 id="main-title">Main Title</h1>
+        <button (click)="doLogout()">logout</button>
+      </header>
+      <main role="main" aria-labelledby="main-title">
+        <router-outlet />
+      </main>
+    </div>
+  </div>
+  <footer class="mainFooter" role="contentinfo" aria-label="Pie de página">
+    Kodeneko@2025
+  </footer>
+</div>
