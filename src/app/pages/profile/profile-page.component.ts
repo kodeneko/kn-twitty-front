@@ -24,16 +24,16 @@ export class ProfilePageComponent implements OnInit {
         console.log('userInfo', res);
       },
       error: (err) => {
-        console.log('userInfo', err);
+        console.log('userInfo - error', err);
       }
     });
 
     userTwitterInfo$.subscribe({
       next: (res) => {
-        console.log('userInfo', res);
+        console.log('userTwitterInfo', res);
       },
       error: (err) => {
-        console.log('userInfo', err);
+        console.log('userTwitterInfo - error', err);
       }
     });
   }

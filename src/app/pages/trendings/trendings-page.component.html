@@ -6,24 +6,36 @@
     <button type="submit">Buscar</button>
   </form>
   <div>
-    <p>WOID</p>
-    <ul>
-      @if (woeid$ | async; as list) {
-        @if(list.length !== 0) {
-          @for(e of list; track e.id) {
-            <li>{{ e.name }} - {{ e.id }} <button (click)="getTrendings(e.id)">trendings</button></li>
-          }
-        } @else {
-          <li>No results</li>
-        }
+    <p>WOEID</p>
+    @if (woeid$ | async; as res) {
+      @if (res.error) {
+        <div>No hay resultados</div>
+      } @else if (res.loading) {
+        <div>Cargando...</div>
       } @else {
-        <p>loading</p>
+        <ul>
+          @for(ele of res.data; track ele.id) {
+            <li>{{ ele.name }} - {{ ele.id }} <button (click)="getTrendings(ele.id)">trendings</button></li>
+          }
+        </ul>
       }
-    </ul>
+    } @else {
+      <div>No hay resultados</div>
+    }
   </div>
 </div>
 
 <div>
   <h2>Results</h2>
-  <div>{{ trendings$ | async | json }}</div>
+  @if (trendings$ | async; as res) {
+    @if (res.error) {
+      <div>No hay resultados</div>
+    } @else if (res.loading) {
+      <div>Cargando...</div>
+    } @else {
+      <div>{{ res.data | json }}</div>
+    }
+  } @else {
+    <div>No hay resultados</div>
+  }
 </div>

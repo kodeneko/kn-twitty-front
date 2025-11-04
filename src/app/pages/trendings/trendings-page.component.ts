@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { WoeidService } from '../../shared/services/woeid.service';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, map, of, startWith } from 'rxjs';
 import { Woeid } from '../../shared/models/woeid.model';
 import { ErrorBack } from '../../shared/models/api/error-back.model';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { TwitterTrendingsRes } from '../../shared/models/twitter/twitter-trendings-res.model';
 import { TrendingsService } from '../../shared/services/trendings.service';
+import { ObservableRes, ObservableResList } from '../../shared/models/observable-res.model';
 
 @Component({
   selector: 'app-trendings-page',
@@ -19,28 +20,27 @@ export class TrendingsPageComponent {
   private trendingsService = inject(TrendingsService);
   public place = "";
 
-  public woeid$!: Observable<Woeid[]>;
-  public trendings$!: Observable<TwitterTrendingsRes | null>;
+  public woeid$!: ObservableResList<Woeid>;
+  public trendings$!: ObservableRes<TwitterTrendingsRes>;
 
   findPlace(form: NgForm) {
     const { place } = form.value;
 
     this.woeid$ = this.woeidService.get(place)
       .pipe(
-        catchError((error: ErrorBack) => {
-          console.log('error woeids', error.code);
-          return of([]);
-        })
+        map(data => ({ data, loading: false, error: null })),
+        startWith({ data: null, loading: true, error: null }),
+        catchError((error: ErrorBack) => of({ data: null, loading: false, error }))
       );
+
   }
 
   getTrendings(woeid: string) {
     this.trendings$ = this.trendingsService.get(woeid)
       .pipe(
-        catchError((error: ErrorBack) => {
-          console.log('error trendings', error.code);
-          return of(null);
-        })
+        map(data => ({ data, loading: false, error: null })),
+        startWith({ data: null, loading: true, error: null }),
+        catchError((error: ErrorBack) => of({ data: null, loading: false, error }))
       );
   }
 }
