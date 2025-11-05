@@ -1,16 +1,20 @@
 <div class="mainCont">
-  <div class="contSideMainCont">
-    <app-main-menu></app-main-menu>
-    <div class="contHeaderMain">
-      <header class="mainHeaderCont" role="banner">
-        <h1 id="main-title">Main Title</h1>
+  <header class="mainHeader">
+    <div class="outer">
+      <div class="left">
+        <h1 class="mainTitle">Kn Twitty</h1>
+        <app-main-menu></app-main-menu>
+      </div>
+      <div class="right">
         <button (click)="doLogout()">logout</button>
-      </header>
-      <main role="main" aria-labelledby="main-title">
-        <router-outlet />
-      </main>
+      </div>
     </div>
-  </div>
+  </header>
+
+  <main class="main" role="main" aria-labelledby="main-title">
+    <router-outlet />
+  </main>
+
   <footer class="mainFooter" role="contentinfo" aria-label="Pie de página">
     Kodeneko@2025
   </footer>

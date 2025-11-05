@@ -4,10 +4,11 @@ import { authTwitter } from '../../shared/globals/paths.globals';
 import { Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { ButtonComponent } from '../../core/components/button/button.component';
 
 @Component({
   selector: 'app-login-page',
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, ButtonComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.less'
 })
