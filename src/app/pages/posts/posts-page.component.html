@@ -11,7 +11,15 @@
       } @else if (res.loading) {
         <div>Cargando...</div>
       } @else {
-        <div>{{ res.data | json }}</div>
+        <div>
+          @for (ele of res.data?.data ?? []; track $index) {
+            <ul>
+              <li>tweet_count: {{ ele.tweet_count }}</li>
+              <li>start: {{ ele.start }}</li>
+              <li>end: {{ ele.end }}</li>
+            </ul>
+          }
+        </div>
       }
     } @else {
       <div>No hay resultados</div>
@@ -19,14 +27,21 @@
   </div>
 
   <div class="place">
-    <h2>Show Posts</h2>
+    <h2 class="title">Show Posts</h2>
     @if (postList$ | async; as res) {
       @if (res.error) {
         <div>No hay resultados</div>
       } @else if (res.loading) {
         <div>Cargando...</div>
       } @else {
-        <div>{{ res.data | json }}</div>
+        <div>
+          @for (ele of res.data?.data ?? []; track $index) {
+            <ul>
+              <li>id: {{ ele.id }}</li>
+              <li>text: {{ ele.text }}</li>
+            </ul>
+          }
+        </div>
       }
     } @else {
       <div>No hay resultados</div>

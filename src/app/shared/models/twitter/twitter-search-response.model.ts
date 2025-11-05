@@ -4,12 +4,8 @@ import { TwitterError } from './twitter-error.model';
 interface Tweet {
   id: string;
   text?: string;
-  protected?: boolean;
-  name?: string;
-  created_at?: string;
-  username?: string;
+  [key: string]: any;
 }
-
 interface User {
   id: string;
   name?: string;
