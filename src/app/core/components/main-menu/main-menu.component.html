@@ -1,9 +1,9 @@
 <nav class="mainMenu" aria-label="Menú principal" role="navigation">
   <ul>
     @for (opt of mainOptMenuList; track opt.id) {
-    <li>
-      <a aria-label="{{opt.id}}" routerLink="{{opt.path}}">{{opt.id}}</a>
-    </li>
+      <li>
+        <a aria-label="{{opt.id}}" routerLink="{{opt.path}}">{{opt.id}}</a>
+      </li>
     }
   </ul>
 </nav>

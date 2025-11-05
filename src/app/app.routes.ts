@@ -34,7 +34,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomePageComponent
+        component: PostsPageComponent
       },
       {
         path: postsPath,
