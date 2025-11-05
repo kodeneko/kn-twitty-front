@@ -8,10 +8,14 @@ import { AsyncPipe, JsonPipe } from '@angular/common';
 import { TwitterTrendingsRes } from '../../shared/models/twitter/twitter-trendings-res.model';
 import { TrendingsService } from '../../shared/services/trendings.service';
 import { ObservableRes, ObservableResList } from '../../shared/models/observable-res.model';
+import { SubtitleComponent } from '../../shared/components/subtitle/subtitle.component';
+import { SectionComponent } from '../../shared/components/section/section.component';
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { InputComponent } from '../../shared/components/input/input.component';
 
 @Component({
   selector: 'app-trendings-page',
-  imports: [FormsModule, AsyncPipe, JsonPipe],
+  imports: [FormsModule, AsyncPipe, JsonPipe, SubtitleComponent, SectionComponent, ButtonComponent, InputComponent],
   templateUrl: './trendings-page.component.html',
   styleUrl: './trendings-page.component.less'
 })
@@ -19,11 +23,14 @@ export class TrendingsPageComponent {
   private woeidService = inject(WoeidService);
   private trendingsService = inject(TrendingsService);
   public place = "";
+  public paramsWoeid = { 
+    place: ''
+  };
 
   public woeid$!: ObservableResList<Woeid>;
   public trendings$!: ObservableRes<TwitterTrendingsRes>;
 
-  findPlace(form: NgForm) {
+  onSubmitWoeid(form: NgForm) {
     const { place } = form.value;
 
     this.woeid$ = this.woeidService.get(place)

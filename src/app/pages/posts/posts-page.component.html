@@ -1,27 +1,55 @@
-<p>Posts Page</p>
+<div class="page">
+  <app-subtitle>Posts Page</app-subtitle>
 
-<h2>Count Posts</h2>
-@if (countList$ | async; as res) {
-  @if (res.error) {
-    <div>No hay resultados</div>
-  } @else if (res.loading) {
-    <div>Cargando...</div>
-  } @else {
-    <div>{{ res.data | json }}</div>
-  }
-} @else {
-  <div>No hay resultados</div>
-}
+  <app-section title="Count Posts">
+    <form class="form" #userForm="ngForm" (ngSubmit)="onSubmitCount(userForm)">
+      <app-input class="formElem" [(ngModel)]="paramsCount.query" label="Query" name="query"></app-input>
+      <app-select class="formElem" [(ngModel)]="paramsCount.days" label="Days" name="days" [options]="optsDays"></app-select>
+      <app-button type="submit">Buscar</app-button>
+    </form>
+    @if (countList$ | async; as res) {
+      @if (res.error) {
+        <div>No hay resultados</div>
+      } @else if (res.loading) {
+        <div>Cargando...</div>
+      } @else {
+        <div>
+          @for (ele of res.data?.data ?? []; track $index) {
+            <ul>
+              <li>tweet_count: {{ ele.tweet_count }}</li>
+              <li>start: {{ ele.start }}</li>
+              <li>end: {{ ele.end }}</li>
+            </ul>
+          }
+        </div>
+      }
+    } @else {
+      <div>Use el formulario para buscar</div>
+    }
+  </app-section>
 
-<h2>Show Posts</h2>
-@if (postList$ | async; as res) {
-  @if (res.error) {
-    <div>No hay resultados</div>
-  } @else if (res.loading) {
-    <div>Cargando...</div>
-  } @else {
-    <div>{{ res.data | json }}</div>
-  }
-} @else {
-  <div>No hay resultados</div>
-}
+  <app-section title="Show Posts">
+    <form class="form" #userForm="ngForm" (ngSubmit)="onSubmitPosts(userForm)">
+      <app-select class="formElem" [(ngModel)]="paramsPosts.days" label="Days" name="days" [options]="optsDays"></app-select>
+      <app-button type="submit">Buscar</app-button>
+    </form>
+    @if (postList$ | async; as res) {
+      @if (res.error) {
+        <div>No hay resultados</div>
+      } @else if (res.loading) {
+        <div>Cargando...</div>
+      } @else {
+        <div>
+          @for (ele of res.data?.data ?? []; track $index) {
+            <ul>
+              <li>id: {{ ele.id }}</li>
+              <li>text: {{ ele.text }}</li>
+            </ul>
+          }
+        </div>
+      }
+    } @else {
+      <div>Use el formulario para busca</div>
+    }
+  </app-section>
+</div>

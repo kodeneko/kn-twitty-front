@@ -1,0 +1,21 @@
+<div class="mainCont">
+  <header class="mainHeader">
+    <div class="outer">
+      <div class="left">
+        <h1 class="mainTitle">Kn Twitty</h1>
+        <app-main-menu></app-main-menu>
+      </div>
+      <div class="right">
+        <app-button (click)="doLogout()" [style]="'line'">Logout</app-button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main" role="main" aria-labelledby="main-title">
+    <router-outlet />
+  </main>
+
+  <footer class="mainFooter">
+    <p>Kodeneko @ 2025</p>
+  </footer>
+</div>

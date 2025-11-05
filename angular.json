@@ -27,9 +27,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
+              "node_modules/the-new-css-reset/css/reset.css",
               "src/styles.less"
             ]
           },
@@ -88,9 +90,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
+              "node_modules/the-new-css-reset/css/reset.css",
               "src/styles.less"
             ]
           }
