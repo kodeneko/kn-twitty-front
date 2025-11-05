@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MainMenuComponent } from '../../core/components/main-menu/main-menu.component';
 import { AuthService } from '../../shared/services/auth.service';
+import { ButtonComponent } from '../../core/components/button/button.component';
 
 @Component({
   selector: 'app-empty-layout',
-  imports: [RouterOutlet, MainMenuComponent],
+  imports: [RouterOutlet, MainMenuComponent, ButtonComponent],
   templateUrl: './empty-layout.component.html',
   styleUrl: './empty-layout.component.less'
 })

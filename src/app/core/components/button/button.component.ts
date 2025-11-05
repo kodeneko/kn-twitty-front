@@ -1,10 +1,11 @@
-import { Component, output } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, input, output } from '@angular/core';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-button',
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, NgClass],
   templateUrl: './button.component.html',
   styleUrl: './button.component.less',
   host: {
@@ -12,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   }
 })
 export class ButtonComponent {
+  style = input<'solid' | 'line'>('solid');
   clickCompo = output<void>();
 
   public onHostClick() {

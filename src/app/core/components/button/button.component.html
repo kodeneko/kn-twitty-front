@@ -1,3 +1,7 @@
-<button class="btn">
+<button [ngClass]="{
+  'btn': true,
+  'solid': style() === 'solid',
+  'line': style() === 'line', 
+}">
   <ng-content></ng-content>
 </button>
