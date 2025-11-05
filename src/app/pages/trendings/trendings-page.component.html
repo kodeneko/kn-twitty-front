@@ -1,41 +1,42 @@
-<p>Trendings Page</p>
+<div class="page">
+  <app-subtitle>Trendings</app-subtitle>
 
-<div>
-  <form #woeidForm="ngForm" (ngSubmit)="findPlace(woeidForm)">
-    <input ngModel name="place" type="text" placeholder="write place"/>
-    <button type="submit">Buscar</button>
-  </form>
-  <div>
-    <p>WOEID</p>
-    @if (woeid$ | async; as res) {
+  <app-section title="WOEID">
+    <form class="form" #woeidForm="ngForm" (ngSubmit)="onSubmitWoeid(woeidForm)">
+      <app-input class="formElem" [(ngModel)]="paramsWoeid.place" label="Place" name="place"></app-input>
+      <app-button type="submit">Buscar</app-button>
+    </form>
+    <div class="resultPlaces">
+      @if (woeid$ | async; as res) {
+        @if (res.error) {
+          <div>No hay resultados</div>
+        } @else if (res.loading) {
+          <div>Cargando...</div>
+        } @else {
+          <ul class="listPlace">
+            @for(ele of res.data; track ele.id) {
+              <li class="ele">{{ ele.name }} - {{ ele.id }} <app-button (click)="getTrendings(ele.id)">Ver trendings</app-button></li>
+            }
+          </ul>
+        }
+      } @else {
+        <div>Use el formulario para buscar una provincia/estado</div>
+      }
+    </div>
+  </app-section>
+
+  <app-section title="Results">
+    @if (trendings$ | async; as res) {
       @if (res.error) {
         <div>No hay resultados</div>
       } @else if (res.loading) {
         <div>Cargando...</div>
       } @else {
-        <ul>
-          @for(ele of res.data; track ele.id) {
-            <li>{{ ele.name }} - {{ ele.id }} <button (click)="getTrendings(ele.id)">trendings</button></li>
-          }
-        </ul>
+        <div>{{ res.data | json }}</div>
       }
     } @else {
-      <div>No hay resultados</div>
+      <div>Elija primero un lugar</div>
     }
-  </div>
-</div>
+  </app-section>
 
-<div>
-  <h2>Results</h2>
-  @if (trendings$ | async; as res) {
-    @if (res.error) {
-      <div>No hay resultados</div>
-    } @else if (res.loading) {
-      <div>Cargando...</div>
-    } @else {
-      <div>{{ res.data | json }}</div>
-    }
-  } @else {
-    <div>No hay resultados</div>
-  }
 </div>

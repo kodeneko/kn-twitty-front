@@ -1,0 +1,12 @@
+
+<div class="field">
+  <label [for]="name()" class="label">{{label()}}</label>
+  <div class="outerSelect">
+    <select [name]="name()" class="select" [value]="value" (change)="onSelect($event)">
+      @for (opt of options(); track opt) {
+        <option [value]="opt.value">{{ opt.label }}</option>
+      }
+    </select>
+    <span class="arrow"><fa-icon class="icon" [icon]="faCaretDown"></fa-icon></span>
+  </div>
+</div>

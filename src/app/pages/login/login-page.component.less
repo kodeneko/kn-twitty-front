@@ -1,0 +1,49 @@
+@import (reference) '../../../styles/color.less';
+
+.mainCont {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+      font-family: "Righteous", sans-serif;
+      font-size: 7rem;
+      margin-bottom: 3rem;
+    }
+
+    .desc {
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-radius: 3rem;
+      padding: 1rem 2rem;
+      background-color: @cMain;
+      cursor: pointer;
+      transition: all .2s;
+
+      .icon {
+        font-size: 1.5rem;
+      }
+
+      &:hover {
+        translate: 0.2rem -0.2rem;
+      }
+    }
+  }
+
+  .right {
+    .pic {
+      max-width: 30rem;
+    }
+  }
+}
