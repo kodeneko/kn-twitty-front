@@ -2,7 +2,7 @@
   <div class="left">
     <h1 class="title">Kn Twitty</h1>
     <p class="desc">Para acceder a la app necesita una cuenta de Twitter</p>
-    <app-button>
+    <app-button (click)="openTwitterDialog()">
       <fa-icon class="icon" [icon]="faTwitter"></fa-icon> <span>Login with Twitter</span>
     </app-button>
   </div>
