@@ -1,4 +1,4 @@
 <div class="field">
   <label for="daysCount" class="label">Days</label>
-  <input id="queryCount" class="input" type="text" />
+  <input id="queryCount" class="input" type="text" [value]="value" (input)="onInput($event.target.value)"  />
 </div>
