@@ -5,12 +5,12 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ButtonComponent } from '../../core/components/button/button.component';
 
 @Component({
-  selector: 'app-empty-layout',
+  selector: 'app-private-layout',
   imports: [RouterOutlet, MainMenuComponent, ButtonComponent],
-  templateUrl: './empty-layout.component.html',
-  styleUrl: './empty-layout.component.less'
+  templateUrl: './private-layout.component.html',
+  styleUrl: './private-layout.component.less'
 })
-export class EmptyLayoutComponent {
+export class PrivateLayoutComponent {
 
   private authService = inject(AuthService);
   private router = inject(Router);

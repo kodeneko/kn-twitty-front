@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { EmptyLayoutComponent } from './layouts/empty/empty-layout.component';
 import { HomePageComponent } from './pages/home/home-page.component';
 import { PublicLayoutComponent } from './layouts/public/public-layout.component';
 import { LoginPageComponent } from './pages/login/login-page.component';
@@ -11,6 +10,7 @@ import { ProfilePageComponent } from './pages/profile/profile-page.component';
 import { privateAreaGuard } from './core/guards/private-area.guard';
 import { RedirectTwitterComponent } from './pages/redirect-twitter/redirect-twitter.component';
 import { goHomeGuard } from './core/guards/go-home.guard';
+import { PrivateLayoutComponent } from './layouts/private/private-layout.component';
 
 export const routes: Routes = [
   {
@@ -29,7 +29,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: EmptyLayoutComponent,
+    component: PrivateLayoutComponent,
     canActivateChild: [privateAreaGuard],
     children: [
       {
