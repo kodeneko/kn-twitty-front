@@ -2,9 +2,9 @@
   <app-subtitle>Posts Page</app-subtitle>
 
   <app-section title="Count Posts">
-    <form class="form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-      <app-input class="formElem" [(ngModel)]="user.query" label="Query" name="query"></app-input>
-      <app-select class="formElem" [(ngModel)]="user.days" label="Days" name="days" [options]="optsDays"></app-select>
+    <form class="form" #userForm="ngForm" (ngSubmit)="onSubmitCount(userForm)">
+      <app-input class="formElem" [(ngModel)]="paramsCount.query" label="Query" name="query"></app-input>
+      <app-select class="formElem" [(ngModel)]="paramsCount.days" label="Days" name="days" [options]="optsDays"></app-select>
       <app-button type="submit">Buscar</app-button>
     </form>
     @if (countList$ | async; as res) {
@@ -24,11 +24,15 @@
         </div>
       }
     } @else {
-      <div>No hay resultados</div>
+      <div>Use el formulario para buscar</div>
     }
   </app-section>
 
   <app-section title="Show Posts">
+    <form class="form" #userForm="ngForm" (ngSubmit)="onSubmitPosts(userForm)">
+      <app-select class="formElem" [(ngModel)]="paramsPosts.days" label="Days" name="days" [options]="optsDays"></app-select>
+      <app-button type="submit">Buscar</app-button>
+    </form>
     @if (postList$ | async; as res) {
       @if (res.error) {
         <div>No hay resultados</div>
@@ -45,7 +49,7 @@
         </div>
       }
     } @else {
-      <div>No hay resultados</div>
+      <div>Use el formulario para busca</div>
     }
   </app-section>
 </div>
