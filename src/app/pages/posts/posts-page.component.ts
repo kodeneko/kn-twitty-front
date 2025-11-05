@@ -1,16 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { PostsService } from '../../shared/services/posts.service';
-import { AsyncPipe, JsonPipe, NgFor } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { catchError, map, of, startWith } from 'rxjs';
 import { ErrorBack } from '../../shared/models/api/error-back.model';
 import { ObservableRes } from '../../shared/models/observable-res.model';
 import { TwitterCountsResponse } from '../../shared/models/twitter/twitter-count-response.model';
 import { TwitterSearchResponse } from '../../shared/models/twitter/twitter-search-response.model';
+import { SectionComponent } from '../../shared/components/section/section.component';
+import { SubtitleComponent } from '../../shared/components/subtitle/subtitle.component';
 
 @Component({
   selector: 'app-posts-page',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, SectionComponent, SubtitleComponent],
   templateUrl: './posts-page.component.html',
   styleUrl: './posts-page.component.less'
 })

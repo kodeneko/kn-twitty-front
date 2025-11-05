@@ -1,10 +1,7 @@
 <div class="page">
-  <h2 class="subtitle">
-    <div class="inner">Posts Page</div>
-  </h2>
+  <app-subtitle>Posts Page</app-subtitle>
 
-  <div class="place">
-    <h2 class="title">Count Posts</h2>
+  <app-section title="Count Posts">
     @if (countList$ | async; as res) {
       @if (res.error) {
         <div>No hay resultados</div>
@@ -24,10 +21,9 @@
     } @else {
       <div>No hay resultados</div>
     }
-  </div>
+  </app-section>
 
-  <div class="place">
-    <h2 class="title">Show Posts</h2>
+  <app-section title="Show Posts">
     @if (postList$ | async; as res) {
       @if (res.error) {
         <div>No hay resultados</div>
@@ -46,5 +42,5 @@
     } @else {
       <div>No hay resultados</div>
     }
-  </div>
+  </app-section>
 </div>

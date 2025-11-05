@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MainMenuComponent } from '../../core/components/main-menu/main-menu.component';
 import { AuthService } from '../../shared/services/auth.service';
-import { ButtonComponent } from '../../core/components/button/button.component';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-private-layout',
