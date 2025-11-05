@@ -2,6 +2,10 @@
   <app-subtitle>Posts Page</app-subtitle>
 
   <app-section title="Count Posts">
+    <div class="form">
+      <app-input class="formElem"></app-input>
+      <app-select class="formElem"></app-select>
+    </div>
     @if (countList$ | async; as res) {
       @if (res.error) {
         <div>No hay resultados</div>

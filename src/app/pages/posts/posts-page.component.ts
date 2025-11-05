@@ -8,16 +8,21 @@ import { TwitterCountsResponse } from '../../shared/models/twitter/twitter-count
 import { TwitterSearchResponse } from '../../shared/models/twitter/twitter-search-response.model';
 import { SectionComponent } from '../../shared/components/section/section.component';
 import { SubtitleComponent } from '../../shared/components/subtitle/subtitle.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { InputComponent } from '../../shared/components/input/input.component';
+import { SelectComponent } from '../../shared/components/select/select.component';
 
 @Component({
   selector: 'app-posts-page',
   standalone: true,
-  imports: [AsyncPipe, SectionComponent, SubtitleComponent],
+  imports: [AsyncPipe, SectionComponent, SubtitleComponent, FontAwesomeModule, InputComponent, SelectComponent],
   templateUrl: './posts-page.component.html',
   styleUrl: './posts-page.component.less'
 })
 export class PostsPageComponent {
 
+  public faCaretDown = faCaretDown;
   private postService = inject(PostsService);
 
   countList$: ObservableRes<TwitterCountsResponse> = this.postService.count('cat', 3)
