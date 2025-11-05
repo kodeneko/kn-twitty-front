@@ -20,6 +20,7 @@ import { NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 export class SelectComponent {
   public faCaretDown = faCaretDown;
   label = input<string>('');
+  name = input<string>('');
   options = input<{ value: any, label: string }[]>([]);
 
   value: any;

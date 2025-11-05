@@ -2,10 +2,11 @@
   <app-subtitle>Posts Page</app-subtitle>
 
   <app-section title="Count Posts">
-    <div class="form">
-      <app-input class="formElem"></app-input>
-      <app-select class="formElem"></app-select>
-    </div>
+    <form class="form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+      <app-input class="formElem" [(ngModel)]="user.query" label="Query" name="query"></app-input>
+      <app-select class="formElem" [(ngModel)]="user.days" label="Days" name="days" [options]="optsDays"></app-select>
+      <app-button type="submit">Buscar</app-button>
+    </form>
     @if (countList$ | async; as res) {
       @if (res.error) {
         <div>No hay resultados</div>

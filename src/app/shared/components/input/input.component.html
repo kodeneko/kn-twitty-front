@@ -1,4 +1,4 @@
 <div class="field">
-  <label for="daysCount" class="label">Days</label>
-  <input id="queryCount" class="input" type="text" [value]="value" (input)="onInput($event.target.value)"  />
+  <label [for]="name()" class="label">{{ label() }}</label>
+  <input [name]="name()" class="input" type="text" [value]="value" (input)="onInput($event.target.value)"  />
 </div>

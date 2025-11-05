@@ -12,11 +12,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { InputComponent } from '../../shared/components/input/input.component';
 import { SelectComponent } from '../../shared/components/select/select.component';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ButtonComponent } from "../../shared/components/button/button.component";
 
 @Component({
   selector: 'app-posts-page',
   standalone: true,
-  imports: [AsyncPipe, SectionComponent, SubtitleComponent, FontAwesomeModule, InputComponent, SelectComponent],
+  imports: [ButtonComponent, FormsModule, AsyncPipe, SectionComponent, SubtitleComponent, FontAwesomeModule, InputComponent, SelectComponent, ButtonComponent],
   templateUrl: './posts-page.component.html',
   styleUrl: './posts-page.component.less'
 })
@@ -24,6 +26,11 @@ export class PostsPageComponent {
 
   public faCaretDown = faCaretDown;
   private postService = inject(PostsService);
+  public optsDays = [
+    { value: 1, label: "1" },
+    { value: 2, label: "2" },
+    { value: 3, label: "3" },
+  ];
 
   countList$: ObservableRes<TwitterCountsResponse> = this.postService.count('cat', 3)
     .pipe(
@@ -45,4 +52,13 @@ export class PostsPageComponent {
       catchError((error: ErrorBack) => of({ data: null, loading: false, error }))
     );
 
+  public user = { 
+    query: 'patata', 
+    days: 1 
+  };
+  
+  onSubmit(form: NgForm) { 
+    console.log('Form:', form.value);
+    console.log('Form:', this.user);
+  }
 }

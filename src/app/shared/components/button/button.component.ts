@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   }
 })
 export class ButtonComponent {
+  type = input<'button' | 'submit' | 'reset'>('button');
   style = input<'solid' | 'line'>('solid');
   clickCompo = output<void>();
 

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -16,6 +16,9 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrl: './input.component.less'
 })
 export class InputComponent {
+  label = input<string>('');
+  name = input<string>('');
+
   value = '';
   onChange = (value: any) => {};
   onTouched = () => {};
